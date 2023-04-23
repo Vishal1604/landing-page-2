@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Uploading post</title>
+</head>
+<style>
+    body{
+        background-color: rgba(0, 0, 0, 0.066);
+    }
+    form{
+        display: flex;
+        width: 60vw;
+        height: 90vh;
+        background-image: linear-gradient(to top, lightgrey 0%, lightgrey 1%, #e0e0e0 26%, #efefef 48%, #d9d9d9 75%, #bcbcbc 100%);
+        margin: auto;
+        margin-top: 30px;
+        flex-direction: column;
+        box-shadow:2px 2px 2px rgba(85, 84, 84, 0.429);
+        border-radius: 5px;
+
+    }
+    .video{
+        display: flex;
+        margin-top: 30px;
+        width: 30vw;
+        height: 70vh;
+        flex-direction: column;
+        padding: 20px; 
+        align-items: center; 
+    }
+   
+    .upload{
+        display: flex;
+        width: 60vw;
+        height: 80vh;
+        margin-top: 20px;
+        
+    }
+    video{
+        height: 25vh;
+        border: 2px solid rgba(0, 0, 0, 0.348);
+        box-shadow:1px 1px 1px rgba(85, 84, 84, 0.429);
+    }
+    textarea{
+        width:30vw ;
+         box-shadow: 2px 2px 2px rgba(100, 100, 100, 0.311);
+             border: 2px solid rgba(0, 0, 0, 0.308);
+             font-size: 15px;
+             background-color: rgba(169, 171, 171, 0.029);
+        
+    }
+    .box{
+        width: 20vw;
+        height: 65vh;
+        border: 1px solid black;
+        box-shadow: 2px 2px 2px 2px rgba(100, 100, 100, 0.311);
+        border-radius: 5px;
+        margin-left: 50px;
+        margin-top: 25px;
+        padding: 10px;
+        background-color: rgba(214, 247, 253, 0.068);
+    }
+    .box #fund{
+     height: 30px;
+     width: 30px;
+     margin-top: 40px;
+     box-shadow: none;
+    }
+    span{
+        font-size: 20px;
+        margin-left: 5px;
+        font-weight: bold;
+        text-shadow: 1px 1px 1px white;
+    
+    }
+    input{
+        margin-top: 30px;
+        height: 5vh;
+        width: 18vw;
+        margin-left: 10px;
+        font-size: 20px;
+        border-radius: 2px;
+        border: 1px solid rgba(0, 0, 0, 0.308);
+        padding-left: 5px;
+        box-shadow: 2px 2px 2px rgba(137, 135, 135, 0.41);
+        background-color: rgba(169, 171, 171, 0.029);
+        font-weight: bold;
+    }
+    .box button{
+        width: 15vw;
+        height: 5vh;
+        margin-top: 25px;
+        margin-left: 35px;
+        font-size: 20px;
+        border: 1px solid rgba(0, 0, 0, 0.308);
+        background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%);
+        color: white;
+        box-shadow: 2px 2px 2px rgba(148, 148, 244, 0.436);
+
+    }
+    #real-file{
+        width: 15vw;
+        height: 5vh;
+        margin-top: 25px;
+        margin-left: 20px;
+        font-size: 18px;
+        border: 1px solid rgba(0, 0, 0, 0.308);
+        background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%);
+        color: white;
+        box-shadow: 2px 2px 2px rgba(148, 148, 244, 0.436);
+        font-size: 17px;
+    }
+    h1{
+        margin: 0%;
+        text-align: center;
+        margin-top: 15px;
+        text-shadow: 1px 1px 1px white;
+    }
+    p{
+        margin: 0%;
+        font-size: 15px;
+        margin-top: -15px;
+        color: green;
+    }
+
+    
+    
+
+</style>
+<body>
+    <form action="">
+        <h1>Create Post</h1><br>
+        <div class="upload">
+            <div class="video">
+                <video id="video" controls="autoplay"><source id="source"  type="video/mp4"></video><br>
+                <textarea name="my text"  cols="30" rows="10" id="write about yourself" placeholder="write discription"></textarea>
+                <input type="file" id="real-file"  onchange="selectedvideo(this);" class="inputs"><br>
+                <p>------Upload Video------</p>
+            </div>
+                <div class="box">
+
+                        <input type="radio" name="fund" id="fund" class="inputs"><span>it's a thankyou post </span><br>
+                        <input type="radio" name="fund" id="fund"class="inputs"><span>it's post to update community &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;members</span><br>
+                        <input type="radio" name="fund" id="fund" class="inputs"><span>its a post to get funds</span><br>
+                    <input type="text" placeholder="Funds Required"  class="inputs" ><br>
+                    <input type="text" placeholder="Set Duration" class="inputs"><br>
+                    <button  id="button" >Upload</button>
+                
+
+                </div>
+
+        </div>
+
+
+    </form>
+    <script>
+
+           function selectedvideo(self){
+            let file=self.files[0];
+            let reader=new FileReader();
+
+            reader.onload=function(e){
+                let src=e.target.result;
+                let video=document.getElementById("video");
+                let source=document.getElementById("source");
+
+                source.setAttribute("src",src);
+                video.load();
+                video.play();
+            };
+            reader.readAsDataURL(file);
+           };
+        
+    </script>
+</body>
+</html>
